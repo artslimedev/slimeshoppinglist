@@ -15,18 +15,15 @@ const database = getDatabase(app);
 const shoppingListRef = ref(database, "shoppingList");
 
 onValue(shoppingListRef, (snapshot) => {
-  const message = document.createElement("p");
+  clearShoppingList();
+
   if (snapshot.exists()) {
     let itemsArray = Object.entries(snapshot.val());
-
-    clearShoppingList();
     itemsArray.forEach((i) => {
       appendListItem(i);
     });
   } else {
-    message.textContent = "Nothing here yet...";
-    message.classList.add("emptyMessage");
-    shoppingList.appendChild(message);
+    showEmptyMessage();
   }
 });
 
@@ -36,6 +33,13 @@ const clearInputField = () => {
 
 const clearShoppingList = () => {
   shoppingList.innerHTML = "";
+};
+
+const showEmptyMessage = () => {
+  const message = document.createElement("p");
+  message.textContent = "Nothing here yet...";
+  message.classList.add("emptyMessage");
+  shoppingList.appendChild(message);
 };
 
 const appendListItem = (item) => {
@@ -53,12 +57,12 @@ const appendListItem = (item) => {
 };
 
 addButtonEl.addEventListener("click", function () {
-  const inputValue = inputFieldEl.value;
-  if (inputValue === "") {
+  const inputValue = inputFieldEl.value.trim();
+  if (!inputValue) {
     alert("Please enter a value");
-  } else {
-    push(shoppingListRef, inputValue);
-
-    clearInputField();
+    return;
   }
+
+  push(shoppingListRef, inputValue);
+  clearInputField();
 });

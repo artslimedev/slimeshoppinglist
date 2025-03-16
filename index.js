@@ -65,4 +65,5 @@ addButtonEl.addEventListener("click", function () {
 
   push(shoppingListRef, inputValue);
   clearInputField();
+  inputFieldEl.focus();
 });

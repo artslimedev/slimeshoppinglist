@@ -11,7 +11,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 100%;
   font-family: "Rubik", sans-serif;
   background-color: #9bd6fd;
   display: flex;
@@ -23,7 +23,6 @@ body {
 .container {
   width: 100%;
   min-width: 250px;
-  padding: 50px;
   background-color: #9bd6fd;
   border-radius: 10px;
   display: flex;

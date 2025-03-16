@@ -74,7 +74,7 @@ button:hover {
   width: 100%;
   min-width: 250px;
   max-width: 376px;
-  max-height: 500px;
+  max-height: 300px;
   overflow-y: auto;
   display: flex;
   text-decoration: none;

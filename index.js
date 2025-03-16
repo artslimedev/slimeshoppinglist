@@ -15,6 +15,7 @@ const database = getDatabase(app);
 const shoppingListRef = ref(database, "shoppingList");
 
 onValue(shoppingListRef, (snapshot) => {
+  const message = document.createElement("p");
   if (snapshot.exists()) {
     let itemsArray = Object.entries(snapshot.val());
 
@@ -23,7 +24,9 @@ onValue(shoppingListRef, (snapshot) => {
       appendListItem(i);
     });
   } else {
-    shoppingList.innerHTML = "No items here...yet";
+    message.textContent = "Nothing here yet...";
+    message.classList.add("emptyMessage");
+    shoppingList.appendChild(message);
   }
 });
 

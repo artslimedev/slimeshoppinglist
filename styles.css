@@ -9,8 +9,6 @@
 
 html,
 body {
-  margin: 0;
-  padding: 0;
   height: 100%;
   font-family: "Rubik", sans-serif;
   background-color: #9bd6fd;
@@ -79,6 +77,11 @@ button:hover {
   display: flex;
   text-decoration: none;
   margin-top: 20px;
+}
+
+.emptyMessage {
+  font-size: 20px;
+  font-weight: 600;
 }
 
 ul {
